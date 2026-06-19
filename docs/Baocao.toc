@@ -23,9 +23,9 @@
 \contentsline {subsection}{\numberline {4.3.3}Hàm tính tốc độ RPM}{15}{subsection.4.3.3}%
 \contentsline {subsection}{\numberline {4.3.4}Task điều khiển PI}{16}{subsection.4.3.4}%
 \contentsline {subsection}{\numberline {4.3.5}Hàm kiểm tra CRC}{17}{subsection.4.3.5}%
-\contentsline {subsection}{\numberline {4.3.6}Hàm xử lý TCP Server}{17}{subsection.4.3.6}%
+\contentsline {subsection}{\numberline {4.3.6}Hàm xử lý TCP Server}{18}{subsection.4.3.6}%
 \contentsline {subsection}{\numberline {4.3.7}Thiết kế frame truyền thông trong firmware}{18}{subsection.4.3.7}%
-\contentsline {section}{\numberline {4.4}Luồng hoạt động của firmware}{19}{section.4.4}%
+\contentsline {section}{\numberline {4.4}Luồng hoạt động của firmware}{20}{section.4.4}%
 \contentsline {chapter}{\numberline {5}MATLAB SIMULINK – PHÂN TÍCH MÃ NGUỒN CƠ CHẾ GIAO TIẾP VÀ THU THẬP DỮ LIỆU QUA TCP/IP}{21}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Khởi tạo cấu hình và thiết lập kết nối TCP/IP}{21}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Vòng lặp lấy mẫu thời gian}{22}{section.5.2}%
