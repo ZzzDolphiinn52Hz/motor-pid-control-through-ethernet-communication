@@ -1,13 +1,14 @@
 \babel@toc {vietnamese}{}\relax 
 \contentsline {chapter}{\numberline {1}TỔNG QUAN ĐỀ TÀI}{2}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Lý do chọn đề tài}{2}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Mục tiêu đề tài}{3}{section.1.2}%
+\contentsline {section}{\numberline {1.2}Mục tiêu đề tài}{2}{section.1.2}%
 \contentsline {section}{\numberline {1.3}Đối tượng và phạm vi nghiên cứu}{3}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Sơ đồ tổng quan hệ thống}{4}{section.1.4}%
+\contentsline {section}{\numberline {1.4}Cấu trúc tổng quan hệ thống}{4}{section.1.4}%
 \contentsline {chapter}{\numberline {2}CƠ SỞ LÝ THUYẾT VỀ ETHERNET VÀ TCP/IP}{5}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Tổng quan về Ethernet}{5}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Mô hình TCP/IP}{6}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Cấu trúc Frame truyền của hệ thống}{7}{section.2.3}%
+\contentsline {section}{\numberline {2.1}Ethernet và module W5500}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Giao thức TCP/IP}{5}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Mô hình TCP Server và TCP Client}{6}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Frame truyền thông ứng dụng}{7}{section.2.4}%
 \contentsline {chapter}{\numberline {3}MẠCH NGUYÊN LÍ VÀ LAYOUT}{9}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Sơ đồ nguyên lí}{9}{section.3.1}%
 \contentsline {section}{\numberline {3.2}PCB Layout}{14}{section.3.2}%

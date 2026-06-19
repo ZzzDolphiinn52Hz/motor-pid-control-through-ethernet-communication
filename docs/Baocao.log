@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.12)  20 JUN 2026 06:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.12)  20 JUN 2026 06:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -932,7 +932,7 @@ Package hyperref Info: Link coloring ON on input line 73.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \c@lstlisting=\count357
-<logo_bk_white.png, id=218, 1016.79875pt x 1027.84pt>
+<logo_bk_white.png, id=222, 1016.79875pt x 1027.84pt>
 File: logo_bk_white.png Graphic file (type png)
 <use logo_bk_white.png>
 Package pdftex.def Info: logo_bk_white.png  used on input line 128.
@@ -966,60 +966,32 @@ l.197 \chapter
 
 ]
 Ch\uhorn \ohorn ng 1.
-[2
+LaTeX Font Info:    Trying to load font information for T5+cmtt on input line 205.
+(C:\Users\PC\AppData\Local\Programs\MiKTeX\tex/latex/vntex\t5cmtt.fd
+File: t5cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+) [2
 
 ] [3] [4]
 Ch\uhorn \ohorn ng 2.
 [5
 
 ]
-<frame_struct.png, id=351, 597.23125pt x 341.275pt>
+<frame_struct.png, id=352, 597.23125pt x 341.275pt>
 File: frame_struct.png Graphic file (type png)
 <use frame_struct.png>
-Package pdftex.def Info: frame_struct.png  used on input line 319.
+Package pdftex.def Info: frame_struct.png  used on input line 299.
 (pdftex.def)             Requested size: 364.19667pt x 208.11494pt.
- [6]
-<frame.png, id=356, 976.64874pt x 130.4875pt>
-File: frame.png Graphic file (type png)
-<use frame.png>
-Package pdftex.def Info: frame.png  used on input line 325.
-(pdftex.def)             Requested size: 364.19667pt x 48.6599pt.
-<IP_package.png, id=357, 817.0525pt x 238.8925pt>
-File: IP_package.png Graphic file (type png)
-<use IP_package.png>
-Package pdftex.def Info: IP_package.png  used on input line 331.
-(pdftex.def)             Requested size: 409.71692pt x 119.79588pt.
-<TCP.png, id=358, 747.79375pt x 248.93pt>
-File: TCP.png Graphic file (type png)
-<use TCP.png>
-Package pdftex.def Info: TCP.png  used on input line 337.
-(pdftex.def)             Requested size: 409.71692pt x 136.38774pt.
- [7
+ [6
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.340 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.2.2}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.340 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.2.3}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.340 
-       <./frame_struct.png (PNG copy)> <./frame.png (PNG copy)> <./IP_package.png (PNG copy)>] [8
-pdfTeX warning (ext4): destination with the same identifier (name{figure.2.4}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.341 \chapter
-              {M·∫†CH NGUY√äN L√ç V√Ä LAYOUT} <./TCP.png (PNG copy)>]
+l.311     \item \textbf
+                       {Python GUI:} TCP Client, ch·ªß ƒë·ªông k·∫øt n·ªëi t... <./frame_struct.png (PNG copy)>] [7] [8]
 Ch\uhorn \ohorn ng 3.
-<connect.png, id=367, 500.87125pt x 321.2pt>
+<connect.png, id=365, 500.87125pt x 321.2pt>
 File: connect.png Graphic file (type png)
 <use connect.png>
-Package pdftex.def Info: connect.png  used on input line 347.
+Package pdftex.def Info: connect.png  used on input line 369.
 (pdftex.def)             Requested size: 409.71692pt x 262.75346pt.
 [9
 
@@ -1027,88 +999,88 @@ Package pdftex.def Info: connect.png  used on input line 347.
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.358 
+l.380 
        <./connect.png (PNG copy)>]
-<w5500.png, id=373, 423.5825pt x 321.2pt>
+<w5500.png, id=371, 423.5825pt x 321.2pt>
 File: w5500.png Graphic file (type png)
 <use w5500.png>
-Package pdftex.def Info: w5500.png  used on input line 379.
+Package pdftex.def Info: w5500.png  used on input line 401.
 (pdftex.def)             Requested size: 364.19667pt x 276.1776pt.
  [10]
-<l298N.png, id=378, 499.8675pt x 171.64125pt>
+<l298N.png, id=376, 499.8675pt x 171.64125pt>
 File: l298N.png Graphic file (type png)
 <use l298N.png>
-Package pdftex.def Info: l298N.png  used on input line 385.
+Package pdftex.def Info: l298N.png  used on input line 407.
 (pdftex.def)             Requested size: 364.19667pt x 125.05872pt.
-<connect_L298N.png, id=379, 663.47874pt x 414.54875pt>
+<connect_L298N.png, id=377, 663.47874pt x 414.54875pt>
 File: connect_L298N.png Graphic file (type png)
 <use connect_L298N.png>
-Package pdftex.def Info: connect_L298N.png  used on input line 391.
+Package pdftex.def Info: connect_L298N.png  used on input line 413.
 (pdftex.def)             Requested size: 364.19667pt x 227.5534pt.
  [11
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.394 
+l.416 
       
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.394 
+l.416 
        <./w5500.png (PNG copy)> <./l298N.png (PNG copy)>]
-<encoder.png, id=384, 424.58624pt x 171.64125pt>
+<encoder.png, id=382, 424.58624pt x 171.64125pt>
 File: encoder.png Graphic file (type png)
 <use encoder.png>
-Package pdftex.def Info: encoder.png  used on input line 397.
+Package pdftex.def Info: encoder.png  used on input line 419.
 (pdftex.def)             Requested size: 364.19667pt x 147.23405pt.
-<dc_servo.png, id=385, 474.77374pt x 319.1925pt>
+<dc_servo.png, id=383, 474.77374pt x 319.1925pt>
 File: dc_servo.png Graphic file (type png)
 <use dc_servo.png>
-Package pdftex.def Info: dc_servo.png  used on input line 403.
+Package pdftex.def Info: dc_servo.png  used on input line 425.
 (pdftex.def)             Requested size: 364.19667pt x 244.85846pt.
  [12
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.406 
+l.428 
       
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3.5}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.406 
+l.428 
        <./connect_L298N.png (PNG copy)> <./encoder.png (PNG copy)>]
-<PCB.png, id=390, 977.6525pt x 683.55376pt>
+<PCB.png, id=388, 977.6525pt x 683.55376pt>
 File: PCB.png Graphic file (type png)
 <use PCB.png>
-Package pdftex.def Info: PCB.png  used on input line 413.
+Package pdftex.def Info: PCB.png  used on input line 435.
 (pdftex.def)             Requested size: 364.19667pt x 254.64233pt.
  [13
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3.6}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.416 
+l.438 
        <./dc_servo.png (PNG copy)>]
-<3d.png, id=395, 821.0675pt x 555.07375pt>
+<3d.png, id=393, 821.0675pt x 555.07375pt>
 File: 3d.png Graphic file (type png)
 <use 3d.png>
-Package pdftex.def Info: 3d.png  used on input line 419.
+Package pdftex.def Info: 3d.png  used on input line 441.
 (pdftex.def)             Requested size: 364.19667pt x 246.20663pt.
  [14
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3.7}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.423 \chapter
+l.445 \chapter
               {THI·∫æT K·∫æ FIRMWARE H·ªÜ TH·ªêNG}
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3.8}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.423 \chapter
+l.445 \chapter
               {THI·∫æT K·∫æ FIRMWARE H·ªÜ TH·ªêNG} <./PCB.png (PNG copy)> <./3d.png (PNG copy)>]
 Ch\uhorn \ohorn ng 4.
-<esp_idf.png, id=400, 476.53032pt x 200.24812pt>
+<esp_idf.png, id=398, 476.53032pt x 200.24812pt>
 File: esp_idf.png Graphic file (type png)
 <use esp_idf.png>
-Package pdftex.def Info: esp_idf.png  used on input line 431.
+Package pdftex.def Info: esp_idf.png  used on input line 453.
 (pdftex.def)             Requested size: 364.19667pt x 153.05182pt.
 [15
 
@@ -1116,84 +1088,80 @@ Package pdftex.def Info: esp_idf.png  used on input line 431.
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.437 E
+l.459 E
        SP32 ƒë∆∞·ª£c khai th√°c theo c·∫•u tr√∫c hai l√µi: <./esp_idf.png>]
-LaTeX Font Info:    Trying to load font information for T5+cmtt on input line 439.
- (C:\Users\PC\AppData\Local\Programs\MiKTeX\tex/latex/vntex\t5cmtt.fd
-File: t5cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-Overfull \hbox (21.64949pt too wide) in paragraph at lines 440--441
+Overfull \hbox (21.64949pt too wide) in paragraph at lines 462--463
 []\T5/cmr/bx/n/12 Core 1 -- APP CPU: \T5/cmr/m/n/12 ch§y \T5/cmtt/m/n/12 rt_timer_setup_task\T5/cmr/m/n/12 , \T5/cmtt/m/n/12 rt_control_task \T5/cmr/m/n/12 v† \T5/cmtt/m/n/12 button_task\T5/cmr/m/n/12 .
  []
 
-<firmware_structure.png, id=407, 1540.75626pt x 1027.84pt>
+<firmware_structure.png, id=405, 1540.75626pt x 1027.84pt>
 File: firmware_structure.png Graphic file (type png)
 <use firmware_structure.png>
-Package pdftex.def Info: firmware_structure.png  used on input line 463.
+Package pdftex.def Info: firmware_structure.png  used on input line 485.
 (pdftex.def)             Requested size: 455.24411pt x 303.68068pt.
 [16] [17
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.484     int 
+l.506     int 
               pwm; <./firmware_structure.png (PNG copy)>]
-Overfull \hbox (43.2201pt too wide) in paragraph at lines 506--507
+Overfull \hbox (43.2201pt too wide) in paragraph at lines 528--529
 []\T5/cmr/m/n/12 NhÌ c°ch tÍ ch˘c n†y, \T5/cmtt/m/n/12 tcp_server_task \T5/cmr/m/n/12 chø c™p nh™t y∂u c¶u ^^_i∑u khi∫n, c·n \T5/cmtt/m/n/12 rt_control_task
  []
 
 [18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28] [29] [30] [31] [32]
-Overfull \hbox (1.53394pt too wide) in paragraph at lines 1045--1046
+Overfull \hbox (1.53394pt too wide) in paragraph at lines 1067--1068
 []\T5/cmr/m/n/12 Ngo†i time-out truy∑n thÊng, nÛt BOOT tr∂n GPIO0 ^^_˜Òc ki∫m tra trong \T5/cmtt/m/n/12 button_task\T5/cmr/m/n/12 .
  []
 
 [33] [34] [35]
 Ch\uhorn \ohorn ng 5.
-<gui_structure.png, id=950, 1096.095pt x 642.14906pt>
+<gui_structure.png, id=946, 1096.095pt x 642.14906pt>
 File: gui_structure.png Graphic file (type png)
 <use gui_structure.png>
-Package pdftex.def Info: gui_structure.png  used on input line 1123.
+Package pdftex.def Info: gui_structure.png  used on input line 1145.
 (pdftex.def)             Requested size: 455.24411pt x 266.71225pt.
 [36
 
 ] (C:\Users\PC\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2025/11/14 1.11b listings language file
 )
-<real_guide.png, id=955, 810.77907pt x 635.37375pt>
+<real_guide.png, id=951, 810.77907pt x 635.37375pt>
 File: real_guide.png Graphic file (type png)
 <use real_guide.png>
-Package pdftex.def Info: real_guide.png  used on input line 1144.
+Package pdftex.def Info: real_guide.png  used on input line 1166.
 (pdftex.def)             Requested size: 455.24411pt x 356.76668pt.
  [37
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1147 
+l.1169 
         <./gui_structure.png>] [38
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1163 STATUS_SEL_TARGET_RPM 
+l.1185 STATUS_SEL_TARGET_RPM 
                              = 0x01 <./real_guide.png>] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50]
 Ch\uhorn \ohorn ng 6.
 [51
 
 ] [52] [53]
-Underfull \hbox (badness 6078) in paragraph at lines 1599--1601
+Underfull \hbox (badness 6078) in paragraph at lines 1621--1623
 []\T5/cmr/m/n/10.95 Espressif Sys-tems, \T5/cmr/m/it/10.95 ESP-IDF Pro-gram-ming Guide -- Eth-er-net Driver\T5/cmr/m/n/10.95 . Avail-able:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1599--1601
+Underfull \hbox (badness 10000) in paragraph at lines 1621--1623
 [][]$\T5/cmtt/m/n/10.95 https : / / docs . espressif . com / projects / esp-[]idf / en / stable / esp32 / api-[]reference /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1603--1605
+Underfull \hbox (badness 10000) in paragraph at lines 1625--1627
 [][]$\T5/cmtt/m/n/10.95 https : / / docs . espressif . com / projects / esp-[]idf / en / stable / esp32 / api-[]reference /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1607--1609
+Underfull \hbox (badness 10000) in paragraph at lines 1629--1631
 [][]$\T5/cmtt/m/n/10.95 https : / / docs . espressif . com / projects / esp-[]idf / en / stable / esp32 / api-[]reference /
  []
 
@@ -1205,20 +1173,20 @@ LaTeX2e <2026-06-01>
 L3 programming layer <2026-05-26>
  ***********
 Package rerunfilecheck Info: File `Baocao.out' has not changed.
-(rerunfilecheck)             Checksum: A8A74B03182B34CE64359E8AA43AFF63;11245.
+(rerunfilecheck)             Checksum: 19CC6E50FB654A565CDFC1D7D927984E;11471.
  ) 
 Here is how much of TeX's memory you used:
- 29153 strings out of 467509
- 548907 string characters out of 5410238
+ 29133 strings out of 467509
+ 548607 string characters out of 5410238
  1167315 words of memory out of 5000000
- 57028 multiletter control sequences out of 15000+600000
+ 57010 multiletter control sequences out of 15000+600000
  651313 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,9n,104p,786b,1319s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,9n,104p,724b,1319s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\PC\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/PC/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnbx10.pfb><C:/Users/PC/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnbx12.pfb><C:/Users/PC/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnr10.pfb><C:/Users/PC/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnr12.pfb><C:/Users/PC/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnti10.pfb><C:/Users/PC/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vntt10.pfb><C:/Users/PC/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vntt12.pfb>
-Output written on Baocao.pdf (58 pages, 3290877 bytes).
+Output written on Baocao.pdf (58 pages, 3078985 bytes).
 PDF statistics:
- 1578 PDF objects out of 1728 (max. 8388607)
- 894 named destinations out of 1000 (max. 500000)
- 522 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1574 PDF objects out of 1728 (max. 8388607)
+ 892 named destinations out of 1000 (max. 500000)
+ 515 words of extra memory for PDF output out of 10000 (max. 10000000)
 

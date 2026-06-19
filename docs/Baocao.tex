@@ -50,7 +50,7 @@
  linkcolor=blue,
  filecolor=magenta, 
  urlcolor=cyan,
- pdftitle={Báo cáo thiết kế bộ điều khiển STSMC cho Quadcopter},
+  pdftitle={Báo cáo thiết kế hệ thống điều khiển động cơ DC qua Ethernet},
  pdfpagemode=FullScreen,
 }
 
@@ -198,121 +198,101 @@ TP. HỒ CHÍ MINH, 2026
 
 \section{Lý do chọn đề tài}
 
-Trong các hệ thống điều khiển và giám sát hiện đại, việc truyền dữ liệu giữa thiết bị điều khiển và máy tính giám sát đóng vai trò rất quan trọng. Các chuẩn giao tiếp truyền thống như UART, USB hoặc truyền thông không dây có thể đáp ứng tốt trong các ứng dụng đơn giản, tuy nhiên khi hệ thống yêu cầu khoảng cách truyền xa hơn, tốc độ ổn định hơn và khả năng kết nối trong mạng LAN thì Ethernet là một lựa chọn phù hợp.
+Trong các hệ thống đo lường và điều khiển, máy tính thường được dùng để cấu hình, giám sát và lưu dữ liệu, còn thiết bị nhúng đảm nhiệm việc đọc cảm biến và điều khiển cơ cấu chấp hành. Khi hệ thống cần truyền dữ liệu trong mạng LAN với khoảng cách xa hơn UART/USB và ổn định hơn giao tiếp không dây, Ethernet là một lựa chọn phù hợp.
 
-Ethernet là chuẩn truyền thông mạng có dây được sử dụng phổ biến trong công nghiệp, phòng thí nghiệm, hệ thống đo lường và điều khiển. Ưu điểm của Ethernet là khả năng truyền dữ liệu ổn định, tốc độ cao, dễ mở rộng và có thể kết nối nhiều thiết bị trong cùng một mạng. Trên nền Ethernet, các giao thức TCP/IP cho phép các thiết bị giao tiếp với nhau thông qua địa chỉ IP và port, giúp việc xây dựng hệ thống điều khiển từ máy tính trở nên thuận tiện hơn.
+ESP32 là vi điều khiển có hiệu năng tốt, hỗ trợ nhiều ngoại vi như GPIO, PWM, SPI và bộ đếm xung. Tuy nhiên, các board ESP32 thông dụng không có sẵn cổng Ethernet RJ45. Vì vậy, việc kết hợp ESP32 với module Ethernet W5500 qua SPI cho phép xây dựng một thiết bị điều khiển có khả năng giao tiếp TCP/IP với máy tính.
 
-ESP32 là một vi điều khiển có hiệu năng tốt, tích hợp nhiều ngoại vi như GPIO, ADC, PWM, SPI, UART, WiFi và Bluetooth. Tuy nhiên, ESP32 không có sẵn cổng Ethernet RJ45 trên các board phát triển thông dụng. Vì vậy, việc kết hợp ESP32 với module Ethernet W5500 thông qua giao tiếp SPI cho phép xây dựng một card giao tiếp Ethernet có khả năng nhận lệnh từ máy tính, xử lý dữ liệu và điều khiển thiết bị ngoại vi.
-
-Trong đề tài này, nhóm thực hiện xây dựng một hệ thống card giao tiếp Ethernet sử dụng ESP32 và W5500. Hệ thống cho phép phần mềm trên máy tính giao tiếp với ESP32 thông qua mạng TCP/IP. Dữ liệu truyền nhận giữa máy tính và ESP32 được đóng gói theo frame cố định 12 byte với định dạng @SEN cho frame truyền đi và @REC cho frame phản hồi. Ngoài ra, hệ thống được ứng dụng để điều khiển động cơ DC có encoder, đọc tốc độ phản hồi và triển khai bộ điều khiển PI thông qua firmware ESP32, giao diện Python hoặc các công cụ giám sát như Matlab/Simulink.
-
-Vì vậy, đề tài có ý nghĩa trong việc kết hợp kiến thức về vi điều khiển, truyền thông Ethernet, TCP/IP, lập trình giao diện Python, thiết kế giao thức truyền thông và điều khiển hệ thống thực tế.
+Đề tài xây dựng hệ thống giám sát và điều khiển tốc độ động cơ DC có encoder qua Ethernet. ESP32 đóng vai trò TCP Server, tự đọc encoder, tự chạy vòng điều khiển PI và xuất PWM điều khiển motor. Máy tính chạy giao diện Python Tkinter đóng vai trò HMI để gửi tham số, bật/tắt PI, điều khiển PWM thủ công và đọc telemetry. Dữ liệu giữa hai phía được đóng gói theo frame cố định 12 byte với header \texttt{@SEN} cho lệnh gửi xuống và \texttt{@REC} cho phản hồi.
 
 \section{Mục tiêu đề tài}
 
-Mục tiêu chính của đề tài là thiết kế và xây dựng một hệ thống giao tiếp Ethernet sử dụng ESP32 và module W5500, cho phép máy tính truyền nhận dữ liệu với ESP32 thông qua giao thức TCP/IP.
+Mục tiêu chính của đề tài là thiết kế và xây dựng một hệ thống điều khiển tốc độ động cơ DC qua Ethernet, trong đó ESP32 thực hiện điều khiển realtime cục bộ, còn máy tính đảm nhiệm cấu hình và giám sát.
 
-Các mục tiêu cụ thể gồm:
-
-Tìm hiểu mô hình TCP/IP và vai trò của Ethernet trong hệ thống truyền thông mạng.
-
-Thiết kế card giao tiếp Ethernet sử dụng ESP32 kết hợp module W5500.
-
-Cấu hình ESP32 giao tiếp với W5500 thông qua chuẩn SPI.
-
-Xây dựng ESP32 đóng vai trò TCP Server để nhận kết nối từ máy tính.
-
-Xây dựng phần mềm Python Tkinter đóng vai trò TCP Client để kết nối, gửi lệnh và nhận dữ liệu từ ESP32.
-
-Thiết kế frame truyền thông cố định 12 byte với định dạng @SEN và @REC.
-
-Xây dựng cơ chế kiểm tra dữ liệu bằng mã kiểm tra CRC/XOR.
-
-Điều khiển các tín hiệu ngoại vi như LED, PWM, ADC và encoder.
-
-Ứng dụng hệ thống vào điều khiển tốc độ động cơ DC có encoder.
-
-Khảo sát khả năng kết nối với Matlab/Simulink hoặc VISA để phục vụ mô phỏng, giám sát và điều khiển.
+Các mục tiêu cụ thể:
+\begin{itemize}
+    \item Thiết kế phần cứng sử dụng ESP32, module Ethernet W5500, driver L298N và động cơ DC có encoder.
+    \item Cấu hình ESP32 giao tiếp với W5500 thông qua SPI và hoạt động như TCP Server trong mạng LAN.
+    \item Thiết kế giao thức truyền thông ứng dụng dạng frame 12 byte, có kiểm tra lỗi bằng checksum XOR.
+    \item Xây dựng firmware hai core: Core 0 xử lý TCP, Core 1 thực hiện vòng điều khiển realtime.
+    \item Đọc encoder bằng PCNT, tính tốc độ RPM và điều khiển PWM bằng LEDC.
+    \item Triển khai bộ điều khiển PI trên ESP32 để điều khiển tốc độ motor theo target RPM.
+    \item Xây dựng giao diện Python Tkinter để kết nối, gửi lệnh, đọc telemetry, ghi log và vẽ biểu đồ realtime.
+\end{itemize}
 
 \section{Đối tượng và phạm vi nghiên cứu}
 
-Đối tượng nghiên cứu của đề tài là hệ thống truyền thông Ethernet giữa máy tính và vi điều khiển ESP32 thông qua module W5500. Trong đó, ESP32 đóng vai trò thiết bị điều khiển và thu thập dữ liệu, còn máy tính đóng vai trò giao diện giám sát, điều khiển và xử lý dữ liệu.
+Đối tượng nghiên cứu là hệ thống truyền thông và điều khiển giữa máy tính và ESP32 qua Ethernet. Trong đó, ESP32 là thiết bị nhúng điều khiển motor, còn máy tính là giao diện HMI.
 
-Phạm vi nghiên cứu của đề tài bao gồm:
+Phạm vi thực hiện của đề tài gồm:
+\begin{itemize}
+    \item Truyền thông Ethernet TCP/IP trong mạng LAN.
+    \item Giao tiếp SPI giữa ESP32 và W5500.
+    \item TCP Server trên ESP32 và TCP Client trên Python.
+    \item Thiết kế frame lệnh/phản hồi 12 byte.
+    \item Điều khiển PWM, đọc encoder và giám sát tốc độ động cơ DC.
+    \item Bộ điều khiển PI chạy cục bộ trong firmware ESP32.
+\end{itemize}
 
-Truyền thông Ethernet trong mạng LAN.
+Đề tài tập trung vào mô hình thực nghiệm phục vụ học tập và kiểm chứng nguyên lý. Các nội dung như bảo mật mạng, chuẩn realtime công nghiệp, điều khiển nhiều node, bảo vệ công suất chuyên sâu và triển khai sản phẩm công nghiệp không thuộc phạm vi chính.
 
-Giao thức TCP/IP giữa máy tính và ESP32.
+\section{Cấu trúc tổng quan hệ thống}
 
-Giao tiếp SPI giữa ESP32 và W5500.
+Hệ thống được tổ chức theo mô hình máy tính giám sát và thiết bị nhúng điều khiển:
 
-Lập trình TCP Server trên ESP32.
+\begin{center}
+\fbox{\begin{minipage}{0.92\textwidth}
+\centering
+\textbf{Python Tkinter GUI}\\
+Kết nối TCP, gửi target/Kp/Ki, đọc RPM/PWM, vẽ biểu đồ, ghi log
 
-Lập trình TCP Client trên Python Tkinter.
+\vspace{0.25cm}
+\texttt{@SEN/@REC} qua TCP/IP Ethernet
+\vspace{0.25cm}
 
-Thiết kế frame truyền thông cố định 12 byte.
+\textbf{ESP32 + W5500}\\
+Core 0: TCP Server \quad -- \quad Core 1: Timer, encoder, PI, PWM
 
-Điều khiển PWM, đọc ADC, đọc encoder và điều khiển động cơ DC.
+\vspace{0.25cm}
+\textbf{L298N + DC Motor + Encoder}
+\end{minipage}}
+\end{center}
 
-Ứng dụng bộ điều khiển PI trong điều khiển tốc độ động cơ.
-
-Đề tài tập trung vào việc xây dựng hệ thống giao tiếp và điều khiển ở mức mô hình thực nghiệm. Các vấn đề chuyên sâu về thiết kế mạch in công nghiệp, bảo mật mạng, tối ưu thời gian thực ở mức hệ điều hành thời gian thực hoặc triển khai hệ thống công nghiệp quy mô lớn không thuộc phạm vi chính của đề tài.
-
-\section{Sơ đồ tổng quan hệ thống}
+Điểm quan trọng của kiến trúc này là TCP/Ethernet chỉ dùng để cấu hình và giám sát. Vòng điều khiển tốc độ được thực hiện ngay trên ESP32 bằng timer phần cứng và task ưu tiên cao, giúp giảm ảnh hưởng của jitter từ mạng hoặc máy tính.
 
 \chapter{CƠ SỞ LÝ THUYẾT VỀ ETHERNET VÀ TCP/IP}
 
-\section{Tổng quan về Ethernet}
+\section{Ethernet và module W5500}
 
-Ethernet là công nghệ truyền thông mạng cục bộ có dây, thường được sử dụng trong các hệ thống mạng LAN. Ethernet quy định cách các thiết bị truyền dữ liệu qua môi trường vật lý như cáp xoắn đôi, đầu nối RJ45, switch mạng và card mạng.
+Ethernet là công nghệ truyền thông mạng cục bộ có dây, sử dụng cáp mạng, đầu RJ45, switch/router và địa chỉ MAC để truyền dữ liệu trong LAN. Ethernet là tầng nền để các giao thức phía trên như IP, TCP và UDP hoạt động.
 
-Trong đề tài, ESP32 không có sẵn cổng Ethernet RJ45 trên board phát triển thông dụng, vì vậy cần sử dụng thêm module Ethernet W5500. Module W5500 đóng vai trò là bộ điều khiển Ethernet, giúp ESP32 có thể kết nối vào mạng LAN thông qua cổng RJ45. ESP32 giao tiếp với W5500 bằng chuẩn SPI.
+Trong đề tài, ESP32 giao tiếp Ethernet thông qua module W5500. W5500 đảm nhiệm phần cứng Ethernet và kết nối RJ45, còn ESP32 giao tiếp với W5500 bằng SPI. Nhờ đó ESP32 có thể tham gia mạng LAN và nhận kết nối từ phần mềm trên máy tính.
 
-Ethernet đảm nhiệm các chức năng chính sau:
+Trong hệ thống thực tế, máy tính và ESP32 chỉ cần nằm cùng lớp mạng IP. Máy tính có thể kết nối mạng bằng Ethernet hoặc WiFi, còn ESP32 kết nối bằng dây Ethernet qua W5500.
 
-Cung cấp môi trường truyền dữ liệu vật lý qua dây mạng RJ45.
+\section{Giao thức TCP/IP}
 
-Truyền dữ liệu trong phạm vi mạng LAN.
+TCP/IP là bộ giao thức nền tảng cho truyền thông mạng. Trong đề tài, dữ liệu điều khiển đi qua các lớp sau:
 
-Sử dụng địa chỉ MAC để nhận diện thiết bị trong mạng cục bộ.
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{0.92\textwidth}{>{\centering\arraybackslash}p{3.2cm} X}
+\toprule
+\textbf{Tầng} & \textbf{Vai trò trong hệ thống} \\
+\midrule
+Ứng dụng & Frame \texttt{@SEN/@REC} do đề tài định nghĩa \\
+Giao vận & TCP, đảm bảo truyền dữ liệu theo luồng tin cậy \\
+Internet & IP, định tuyến dữ liệu tới đúng địa chỉ ESP32 \\
+Liên kết mạng & Ethernet/W5500, truyền dữ liệu trong mạng LAN \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
-Đóng gói dữ liệu ở tầng thấp dưới dạng Ethernet frame.
+Khi giao diện Python gửi một lệnh xuống ESP32, dữ liệu ứng dụng được đóng gói theo chuỗi:
 
-Là nền tảng để các giao thức tầng trên như IP, TCP và UDP hoạt động.
-
-Trong hệ thống thực tế, phía ESP32 sử dụng Ethernet thông qua W5500. Phía máy tính có thể kết nối vào router bằng Ethernet hoặc WiFi. Nếu máy tính dùng WiFi còn ESP32 dùng dây Ethernet, hai thiết bị vẫn có thể giao tiếp được nếu chúng nằm trong cùng một mạng LAN.
-
-\section{Mô hình TCP/IP}
-
-TCP/IP là bộ giao thức nền tảng được sử dụng trong truyền thông mạng. Mô hình TCP/IP thường được mô tả gồm 4 tầng chính:
-
-Tầng ứng dụng - Application Layer
-
-Python GUI
-
-Tầng giao vận - Transport Layer
-
-TCP/UDP
-
-Tầng Internet - Internet Layer
-
-IP
-
-Tầng liên kết mạng- Network Access / Link Layer
-
-Ethernet
-
-Trong một số tài liệu, tầng thấp nhất có thể được gọi là tầng vật lý hoặc tầng liên kết mạng. Về bản chất, tầng này bao gồm các công nghệ truyền dữ liệu ở mức thấp như Ethernet hoặc WiFi.
-
-Mô hình TCP/IP trong hệ thống của đề tài có thể biểu diễn như sau:
-
-Khi Python GUI gửi một frame điều khiển xuống ESP32, frame này không đi trực tiếp trên dây Ethernet. Thay vào đó, dữ liệu được đóng gói qua nhiều lớp:
-
-[Ethernet Frame [IP Packet [TCP Segment [@SEN ... \#]]]]
-
-Trong đó, @SEN ... \# là dữ liệu ứng dụng do nhóm thiết kế, TCP đảm bảo dữ liệu được truyền ổn định, IP định tuyến dữ liệu tới đúng địa chỉ thiết bị, còn Ethernet truyền dữ liệu qua mạng vật lý.
-
-\section{Cấu trúc Frame truyền của hệ thống}
+\begin{center}
+\texttt{Ethernet Frame [ IP Packet [ TCP Segment [ @SEN ... \# ] ] ]}
+\end{center}
 
 \begin{figure}[H]
 \centering
@@ -320,23 +300,65 @@ Trong đó, @SEN ... \# là dữ liệu ứng dụng do nhóm thiết kế, TCP 
 \caption{ Cấu trúc tổng quát}
 \end{figure}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.8\textwidth]{frame.png}
-\caption{ Cấu trúc frame truyền của Ethernet}
-\end{figure}
+TCP phù hợp cho cấu hình, giám sát và truyền dữ liệu trạng thái vì có cơ chế đảm bảo thứ tự và phát hiện mất kết nối. Tuy nhiên TCP không đảm bảo chu kỳ realtime nghiêm ngặt. Vì vậy trong đề tài, TCP không được dùng để đóng vòng điều khiển tốc độ từ PC; vòng điều khiển PI được chạy cục bộ trong ESP32.
 
-\begin{figure}[H]
-\centering
- \includegraphics[width=0.9\textwidth]{IP_package.png}
-\caption{Cấu trúc frame truyền của IP Package}
-\end{figure}
+\section{Mô hình TCP Server và TCP Client}
 
-\begin{figure}[H]
+Trong mô hình client/server, một phía mở cổng và chờ kết nối, phía còn lại chủ động kết nối tới địa chỉ IP và port đó. Hệ thống của đề tài sử dụng:
+
+\begin{itemize}
+    \item \textbf{ESP32:} TCP Server, IP tĩnh \texttt{192.168.2.177}, port \texttt{5000}.
+    \item \textbf{Python GUI:} TCP Client, chủ động kết nối tới ESP32.
+\end{itemize}
+
+Sau khi kết nối thành công, Python gửi từng frame lệnh 12 byte. ESP32 kiểm tra frame, cập nhật lệnh điều khiển hoặc đọc telemetry, sau đó trả về frame phản hồi 12 byte.
+
+\section{Frame truyền thông ứng dụng}
+
+Frame truyền thông của đề tài có độ dài cố định 12 byte. Cách thiết kế này giúp firmware dễ nhận đủ dữ liệu, kiểm tra lỗi và giải mã lệnh.
+
+\begin{table}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{TCP.png}
-\caption{ Cấu trúc frame truyền của TCP segment}
-\end{figure}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{0.95\textwidth}{>{\centering\arraybackslash}p{1.2cm} >{\centering\arraybackslash}p{2.5cm} X}
+\toprule
+\textbf{Byte} & \textbf{Frame gửi} & \textbf{Ý nghĩa} \\
+\midrule
+0 & @ & Ký tự bắt đầu frame \\
+1--3 & SEN & Header lệnh từ PC xuống ESP32 \\
+4 & CMD & Mã lệnh \\
+5--6 & DATA & Dữ liệu 16 bit, byte cao trước \\
+7--8 & OPT & Tùy chọn phụ, ví dụ selector khi đọc status \\
+9 & SEQ & Số thứ tự frame \\
+10 & CRC & Checksum XOR 10 byte đầu \\
+11 & \# & Ký tự kết thúc frame \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Frame phản hồi từ ESP32 có cùng độ dài nhưng dùng header \texttt{@REC}. Hai byte vị trí 7 và 8 lần lượt là \texttt{STATUS} và \texttt{ERROR} để báo kết quả xử lý lệnh.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{0.95\textwidth}{>{\centering\arraybackslash}p{1.2cm} >{\centering\arraybackslash}p{2.5cm} X}
+\toprule
+\textbf{Byte} & \textbf{Frame phản hồi} & \textbf{Ý nghĩa} \\
+\midrule
+0 & @ & Ký tự bắt đầu frame \\
+1--3 & REC & Header phản hồi từ ESP32 về PC \\
+4 & CMD & Mã lệnh được phản hồi \\
+5--6 & DATA & Dữ liệu trả về 16 bit \\
+7 & STATUS & Trạng thái xử lý, 0 là OK \\
+8 & ERROR & Mã lỗi nếu có \\
+9 & SEQ & Số thứ tự, giữ nguyên từ request \\
+10 & CRC & Checksum XOR 10 byte đầu \\
+11 & \# & Ký tự kết thúc frame \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Các lệnh chính gồm ghi PWM thủ công, đặt target RPM, đặt hệ số PI, bật/tắt PI, đọc RPM, đọc PWM và đọc các trạng thái telemetry. Phần triển khai chi tiết của giao thức được trình bày trong các chương firmware và giao diện.
 
 \chapter{MẠCH NGUYÊN LÍ VÀ LAYOUT}
 

@@ -1,10 +1,7 @@
 \babel@toc {vietnamese}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Cấu trúc tổng quát}}{7}{figure.2.1}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Cấu trúc frame truyền của Ethernet}}{7}{figure.2.2}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Cấu trúc frame truyền của IP Package}}{7}{figure.2.3}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Cấu trúc frame truyền của TCP segment}}{8}{figure.2.4}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Cấu trúc tổng quát}}{6}{figure.2.1}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Sơ đồ kết nối chân của ESP32}}{9}{figure.3.1}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Sơ đồ kết nối chân của module W5500}}{11}{figure.3.2}%
