@@ -1,0 +1,18 @@
+\babel@toc {vietnamese}{}\relax 
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Mô hình của Quadcopter với hệ tọa độ quán tính $E$ và hệ tọa độ thân $B$.}}{6}{figure.2.1}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Sơ đồ khối bộ điều khiển}}{13}{figure.3.1}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Cấu trúc mô hình Simulink cho bộ điều khiển STSMC của Quadcopter}}{29}{figure.5.1}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Đáp ứng vị trí $x$, $y$, $z$ trong chế độ hovering}}{30}{figure.5.2}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Đáp ứng góc roll $\phi $, pitch $\theta $, yaw $\psi $ trong chế độ hovering}}{31}{figure.5.3}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Sai số bám trong chế độ hovering}}{32}{figure.5.4}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Quỹ đạo 3D trong chế độ hovering}}{32}{figure.5.5}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Đáp ứng bám vị trí $x$, $y$, $z$ theo thời gian}}{33}{figure.5.6}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Đáp ứng bám góc roll $\phi $, pitch $\theta $, yaw $\psi $ theo thời gian}}{34}{figure.5.7}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces So sánh quỹ đạo trong mặt phẳng $x$-$y$}}{35}{figure.5.8}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Quỹ đạo 3D của Quadcopter}}{36}{figure.5.9}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Sai số bám của 6 biến trạng thái}}{37}{figure.5.10}%
