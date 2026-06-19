@@ -430,8 +430,7 @@ Firmware của hệ thống được xây dựng trên nền tảng ESP-IDF và 
 \includegraphics[width=0.8\textwidth]{esp_idf.png}
 \caption{Môi trường phát triển firmware ESP32 sử dụng ESP-IDF trên Visual Studio Code}
 \end{figure}
-
-Firmware được tổ chức theo mô hình đa nhiệm của FreeRTOS và áp dụng nguyên tắc **Hard Realtime công nghiệp**. Hệ thống khai thác cấu trúc lõi kép của ESP32:
+Firmware được tổ chức theo mô hình đa nhiệm của FreeRTOS và áp dụng nguyên tắc Hard Realtime công nghiệp. Hệ thống khai thác cấu trúc lõi kép của ESP32:
 \begin{itemize}
     \item \textbf{Core 0 (Mạng và Giao tiếp):} Chạy \texttt{tcp\_server\_task} với độ ưu tiên thấp. Nhiệm vụ duy nhất là nhận/gửi dữ liệu với PC, không can thiệp trực tiếp vào xung PWM của phần cứng. Dữ liệu lệnh được lưu vào bộ đệm cấu trúc \texttt{control\_command\_t}.
     \item \textbf{Core 1 (Điều khiển thời gian thực):} Chạy \texttt{rt\_control\_task} với độ ưu tiên cao nhất. Vòng lặp điều khiển bao gồm đọc encoder, tính toán PID, cập nhật xung PWM được thực hiện hoàn toàn độc lập tại đây. Các trạng thái telemetry sẽ được xuất ra bộ đệm \texttt{telemetry\_t} để Core 0 đọc, giảm thiểu việc tranh chấp tài nguyên (lock/critical section).
