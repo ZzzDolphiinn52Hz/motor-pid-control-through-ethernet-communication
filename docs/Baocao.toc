@@ -13,41 +13,42 @@
 \contentsline {section}{\numberline {3.2}PCB Layout}{8}{section.3.2}%
 \contentsline {chapter}{\numberline {4}THIẾT KẾ FIRMWARE HỆ THỐNG}{10}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Tổng quan cấu trúc firmware}{10}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Khởi tạo các module phần cứng}{11}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Khởi tạo Encoder}{11}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Khởi tạo điều khiển động cơ}{12}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Khởi tạo Ethernet W5500}{14}{subsection.4.2.3}%
-\contentsline {section}{\numberline {4.3}Các hàm xử lý trong firmware}{14}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Hàm điều khiển tốc độ động cơ}{14}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Hàm điều khiển chiều quay động cơ}{15}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Hàm tính tốc độ RPM}{15}{subsection.4.3.3}%
-\contentsline {subsection}{\numberline {4.3.4}Task điều khiển PI}{16}{subsection.4.3.4}%
-\contentsline {subsection}{\numberline {4.3.5}Hàm kiểm tra CRC}{17}{subsection.4.3.5}%
-\contentsline {subsection}{\numberline {4.3.6}Hàm xử lý TCP Server}{18}{subsection.4.3.6}%
-\contentsline {subsection}{\numberline {4.3.7}Thiết kế frame truyền thông trong firmware}{18}{subsection.4.3.7}%
-\contentsline {section}{\numberline {4.4}Luồng hoạt động của firmware}{20}{section.4.4}%
-\contentsline {chapter}{\numberline {5}MATLAB SIMULINK – PHÂN TÍCH MÃ NGUỒN CƠ CHẾ GIAO TIẾP VÀ THU THẬP DỮ LIỆU QUA TCP/IP}{21}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Khởi tạo cấu hình và thiết lập kết nối TCP/IP}{21}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Vòng lặp lấy mẫu thời gian}{22}{section.5.2}%
-\contentsline {chapter}{\numberline {6}THIẾT KẾ GIAO DIỆN QUẢN LÍ C\#}{24}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Thiết kế giao diện winform}{25}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Cấu hình TCP Client trên C\#}{25}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Xây dựng hàm đóng gói frame @SEN}{26}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Chương trình con tính CRC}{27}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Chương trình con đóng gói frame @SEN}{27}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Chương trình con gửi frame xuống ESP32}{28}{section.6.6}%
-\contentsline {section}{\numberline {6.7}Xây dựng hàm nhận và giải mã frame @REC}{29}{section.6.7}%
-\contentsline {section}{\numberline {6.8}Chương trình con nhận dữ liệu từ ESP32}{29}{section.6.8}%
-\contentsline {section}{\numberline {6.9}Chương trình con xử lý bộ đệm nhận}{30}{section.6.9}%
-\contentsline {section}{\numberline {6.10}Chương trình con kiểm tra frame nhận}{31}{section.6.10}%
-\contentsline {section}{\numberline {6.11}Chương trình con giải mã frame nhận}{31}{section.6.11}%
-\contentsline {section}{\numberline {6.12}Hiển thị dữ liệu realtime: tốc độ, PWM, trạng thái kết nối}{32}{section.6.12}%
-\contentsline {section}{\numberline {6.13}Chương trình con cập nhật trạng thái kết nối}{32}{section.6.13}%
-\contentsline {section}{\numberline {6.14}Chương trình con ghi log realtime}{33}{section.6.14}%
-\contentsline {section}{\numberline {6.15}Chương trình con cập nhật tốc độ RPM}{33}{section.6.15}%
-\contentsline {section}{\numberline {6.16}Chương trình con cập nhật giá trị PWM}{33}{section.6.16}%
-\contentsline {section}{\numberline {6.17}Chương trình con đọc tốc độ RPM}{34}{section.6.17}%
-\contentsline {section}{\numberline {6.18}Chương trình con tự động đọc RPM}{34}{section.6.18}%
-\contentsline {section}{\numberline {6.19}Đoạn xử lý dữ liệu realtime trong frame phản hồi @REC}{34}{section.6.19}%
-\contentsline {chapter}{\numberline {7}TỔNG KẾT}{36}{chapter.7}%
-\contentsline {chapter}{\numberline {8}TÀI LIỆU THAM KHẢO}{38}{chapter.8}%
+\contentsline {section}{\numberline {4.2}Bộ nhớ đệm lệnh và telemetry}{12}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Khởi tạo các module phần cứng}{13}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Khởi tạo encoder}{13}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Khởi tạo điều khiển động cơ}{14}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Khởi tạo Ethernet}{16}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.4}Thiết kế vòng điều khiển thời gian thực trên Core 1}{17}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Timer ISR tối giản}{17}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Tạo task điều khiển và ghim vào Core 1}{17}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Đọc encoder và tính RPM}{18}{subsection.4.4.3}%
+\contentsline {subsection}{\numberline {4.4.4}Cập nhật PWM trong task realtime}{19}{subsection.4.4.4}%
+\contentsline {subsection}{\numberline {4.4.5}Bộ điều khiển PI}{20}{subsection.4.4.5}%
+\contentsline {subsection}{\numberline {4.4.6}Luồng xử lý của task realtime}{21}{subsection.4.4.6}%
+\contentsline {section}{\numberline {4.5}Task TCP Server trên Core 0}{23}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Tạo TCP server}{23}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}TCP không trực tiếp điều khiển PWM}{24}{subsection.4.5.2}%
+\contentsline {section}{\numberline {4.6}Giao thức frame truyền thông}{25}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Giám sát an toàn và timeout truyền thông}{27}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Tạo các task trong hàm app\_main}{28}{section.4.8}%
+\contentsline {section}{\numberline {4.9}Luồng hoạt động của firmware}{29}{section.4.9}%
+\contentsline {chapter}{\numberline {5}THIẾT KẾ GIAO DIỆN QUẢN LÍ BẰNG PYTHON}{31}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Tổng quan giao diện Python}{31}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Định nghĩa giao thức và tham số giao tiếp}{33}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Tính CRC và đóng gói frame @SEN}{34}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Nhận và giải mã frame @REC}{35}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Luồng TCP Client RealtimeClient}{36}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Thiết kế lớp giao diện MotorGUI}{38}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Kết nối và ngắt kết nối ESP32}{38}{section.5.7}%
+\contentsline {section}{\numberline {5.8}Điều khiển Manual PWM}{39}{section.5.8}%
+\contentsline {section}{\numberline {5.9}Cấu hình bộ điều khiển PI trong firmware}{40}{section.5.9}%
+\contentsline {section}{\numberline {5.10}Đọc telemetry và monitor tự động}{41}{section.5.10}%
+\contentsline {section}{\numberline {5.11}Xử lý sự kiện từ luồng TCP}{42}{section.5.11}%
+\contentsline {section}{\numberline {5.12}Cập nhật dữ liệu phản hồi lên giao diện}{43}{section.5.12}%
+\contentsline {section}{\numberline {5.13}Vẽ biểu đồ realtime}{44}{section.5.13}%
+\contentsline {section}{\numberline {5.14}Ghi log và đóng chương trình}{44}{section.5.14}%
+\contentsline {chapter}{\numberline {6}TỔNG KẾT}{46}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Kết quả đạt được}{46}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Ý nghĩa của kiến trúc realtime cục bộ}{47}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Hạn chế}{47}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Hướng phát triển}{47}{section.6.4}%

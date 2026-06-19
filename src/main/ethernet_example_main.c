@@ -252,10 +252,10 @@ static void init_motor(void)
         .hpoint = 0,
     };
     ESP_ERROR_CHECK(ledc_channel_config(&ledc_channel));
-    set_motor_output(0);
+    set_motor_output_rt(0);
 }
 
-static int IRAM_ATTR sample_rpm_isr(int period_ms)
+static int sample_rpm(int period_ms)
 {
     int pulse_count = 0;
     if (pcnt_unit_get_count(pcnt_unit, &pulse_count) != ESP_OK) {
@@ -357,7 +357,7 @@ static void rt_control_task(void *arg)
 
         pi_countdown--;
         if (pi_countdown <= 0) {
-            current_rpm = sample_rpm_isr(PI_PERIOD_MS);
+            current_rpm = sample_rpm(PI_PERIOD_MS);
         }
 
         control_command_t cmd;
@@ -765,7 +765,7 @@ void app_main(void)
     init_motor();
 
     portENTER_CRITICAL(&state_lock);
-    g_state.last_command_time_us = esp_timer_get_time();
+    g_cmd.last_command_time_us = esp_timer_get_time();
     portEXIT_CRITICAL(&state_lock);
 
     xTaskCreatePinnedToCore(
@@ -773,7 +773,7 @@ void app_main(void)
         "rt_timer_setup",
         4096,
         NULL,
-        RT_TIMER_SETUP_PRIORITY,
+        RT_CONTROL_PRIORITY - 1, // Just enough priority to set up the timer
         NULL,
         RT_CORE_ID);
 
