@@ -179,11 +179,12 @@ TP. HỒ CHÍ MINH, 2026
 
 \listoffigures
 
-\newpage
+% --- Danh sách bảng biểu ---
+%\newpage
 
-\listoftables
+%\listoftables
 
-\newpage
+%\newpage
 
 % --- Phần chính: đánh số trang Ả Rập ---
 
@@ -315,26 +316,26 @@ Trong đó, @SEN ... \# là dữ liệu ứng dụng do nhóm thiết kế, TCP 
 
 \begin{figure}[H]
 \centering
-% \includegraphics[width=0.8\textwidth]{...}
-\caption{Cấu trúc tổng quát}
+\includegraphics[width=0.8\textwidth]{frame_struct.png}
+\caption{ Cấu trúc tổng quát}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-% \includegraphics[width=0.8\textwidth]{...}
-\caption{Cấu trúc frame truyền của Ethernet}
+\includegraphics[width=0.8\textwidth]{frame.png}
+\caption{ Cấu trúc frame truyền của Ethernet}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-% \includegraphics[width=0.8\textwidth]{...}
+ \includegraphics[width=0.9\textwidth]{IP_package.png}
 \caption{Cấu trúc frame truyền của IP Package}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-% \includegraphics[width=0.8\textwidth]{...}
-\caption{Cấu trúc frame truyền của TCP segment}
+\includegraphics[width=0.9\textwidth]{TCP.png}
+\caption{ Cấu trúc frame truyền của TCP segment}
 \end{figure}
 
 \chapter{MẠCH NGUYÊN LÍ VÀ LAYOUT}
@@ -343,7 +344,7 @@ Trong đó, @SEN ... \# là dữ liệu ứng dụng do nhóm thiết kế, TCP 
 
 \begin{figure}[H]
 \centering
-% \includegraphics[width=0.8\textwidth]{...}
+\includegraphics[width=0.9\textwidth]{connect.png}
 \caption{Sơ đồ kết nối chân của ESP32}
 \end{figure}
 
@@ -375,32 +376,32 @@ So với các chân GPIO từ 34 đến 39 (vốn chỉ có thể làm Input và
 
 \begin{figure}[H]
 \centering
-% \includegraphics[width=0.8\textwidth]{...}
+\includegraphics[width=0.8\textwidth]{w5500.png}
 \caption{Sơ đồ kết nối chân của module W5500}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-% \includegraphics[width=0.8\textwidth]{...}
+\includegraphics[width=0.8\textwidth]{l298N.png}
 \caption{Sơ đồ kết nối chân để kết nối với L298N}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-% \includegraphics[width=0.8\textwidth]{...}
+\includegraphics[width=0.8\textwidth]{connect_L298N.png}
 \caption{Sơ đồ kết nối chân của L298N}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-% \includegraphics[width=0.8\textwidth]{...}
+\includegraphics[width=0.8\textwidth]{encoder.png}
 \caption{Sơ đồ kết nối chân để kết nối với DC Servo}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-% \includegraphics[width=0.8\textwidth]{...}
-\caption{Hình 4.6: Sơ đồ kết nối chân của DC Servo}
+\includegraphics[width=0.8\textwidth]{dc_servo.png}
+\caption{ Sơ đồ kết nối chân của DC Servo}
 \end{figure}
 
 Vì lí do không thể kiếm được thư viện của module L298N và động cơ DC Servo có tích hợp Encoder, nên khi vẽ mạch PCB thì ta chỉ có thể kéo ra các chân của header.
@@ -409,14 +410,14 @@ Vì lí do không thể kiếm được thư viện của module L298N và độ
 
 \begin{figure}[H]
 \centering
-% \includegraphics[width=0.8\textwidth]{...}
-\caption{Hình 4.7: PCB Layout}
+\includegraphics[width=0.8\textwidth]{PCB.png}
+\caption{ PCB Layout}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-% \includegraphics[width=0.8\textwidth]{...}
-\caption{Hình 4.8: 3D View}
+\includegraphics[width=0.8\textwidth]{3d.png}
+\caption{3D View}
 \end{figure}
 
 \chapter{THIẾT KẾ FIRMWARE HỆ THỐNG}

@@ -1,23 +1,23 @@
 \babel@toc {vietnamese}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Cấu trúc tổng quát}}{5}{figure.2.1}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Cấu trúc frame truyền của Ethernet}}{5}{figure.2.2}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Cấu trúc frame truyền của IP Package}}{6}{figure.2.3}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Cấu trúc frame truyền của TCP segment}}{6}{figure.2.4}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Cấu trúc tổng quát}}{7}{figure.2.1}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Cấu trúc frame truyền của Ethernet}}{7}{figure.2.2}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Cấu trúc frame truyền của IP Package}}{7}{figure.2.3}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Cấu trúc frame truyền của TCP segment}}{8}{figure.2.4}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Sơ đồ kết nối chân của ESP32}}{7}{figure.3.1}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Sơ đồ kết nối chân của module W5500}}{8}{figure.3.2}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Sơ đồ kết nối chân để kết nối với L298N}}{8}{figure.3.3}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Sơ đồ kết nối chân của L298N}}{8}{figure.3.4}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Sơ đồ kết nối chân để kết nối với DC Servo}}{8}{figure.3.5}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Hình 4.6: Sơ đồ kết nối chân của DC Servo}}{8}{figure.3.6}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Hình 4.7: PCB Layout}}{8}{figure.3.7}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Hình 4.8: 3D View}}{9}{figure.3.8}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Sơ đồ kết nối chân của ESP32}}{9}{figure.3.1}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Sơ đồ kết nối chân của module W5500}}{11}{figure.3.2}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Sơ đồ kết nối chân để kết nối với L298N}}{11}{figure.3.3}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Sơ đồ kết nối chân của L298N}}{12}{figure.3.4}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Sơ đồ kết nối chân để kết nối với DC Servo}}{12}{figure.3.5}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Sơ đồ kết nối chân của DC Servo}}{13}{figure.3.6}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces PCB Layout}}{14}{figure.3.7}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces 3D View}}{14}{figure.3.8}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Môi trường phát triển firmware ESP32 sử dụng ESP-IDF trên Visual Studio Code}}{10}{figure.4.1}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Sơ đồ cấu trúc firmware theo mô hình hai core: TCP ở Core 0, realtime control ở Core 1.}}{12}{figure.4.2}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Môi trường phát triển firmware ESP32 sử dụng ESP-IDF trên Visual Studio Code}}{15}{figure.4.1}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Sơ đồ cấu trúc firmware theo mô hình hai core: TCP ở Core 0, realtime control ở Core 1.}}{17}{figure.4.2}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Tổng quan giao diện Python Tkinter điều khiển và giám sát motor}}{32}{figure.5.1}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Giao diện được thiết kế}}{33}{figure.5.2}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Tổng quan giao diện Python Tkinter điều khiển và giám sát motor}}{37}{figure.5.1}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Giao diện được thiết kế}}{38}{figure.5.2}%
 \addvspace {10\p@ }
