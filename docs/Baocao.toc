@@ -15,13 +15,13 @@
 \contentsline {section}{\numberline {4.1}Tổng quan cấu trúc firmware}{10}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Khởi tạo các module phần cứng}{11}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Khởi tạo Encoder}{11}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Khởi tạo điều khiển động cơ}{11}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Khởi tạo Ethernet W5500}{13}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.2}Khởi tạo điều khiển động cơ}{12}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Khởi tạo Ethernet W5500}{14}{subsection.4.2.3}%
 \contentsline {section}{\numberline {4.3}Các hàm xử lý trong firmware}{14}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}Hàm điều khiển tốc độ động cơ}{14}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Hàm điều khiển chiều quay động cơ}{14}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.2}Hàm điều khiển chiều quay động cơ}{15}{subsection.4.3.2}%
 \contentsline {subsection}{\numberline {4.3.3}Hàm tính tốc độ RPM}{15}{subsection.4.3.3}%
-\contentsline {subsection}{\numberline {4.3.4}Task điều khiển PI}{15}{subsection.4.3.4}%
+\contentsline {subsection}{\numberline {4.3.4}Task điều khiển PI}{16}{subsection.4.3.4}%
 \contentsline {subsection}{\numberline {4.3.5}Hàm kiểm tra CRC}{17}{subsection.4.3.5}%
 \contentsline {subsection}{\numberline {4.3.6}Hàm xử lý TCP Server}{17}{subsection.4.3.6}%
 \contentsline {subsection}{\numberline {4.3.7}Thiết kế frame truyền thông trong firmware}{18}{subsection.4.3.7}%

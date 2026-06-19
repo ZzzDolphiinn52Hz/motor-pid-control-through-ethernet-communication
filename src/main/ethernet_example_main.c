@@ -83,8 +83,12 @@ static const char *TAG = "eth_rt_motor";
 
 #define CONTROL_FLAG_PI_ENABLED 0x0001
 
-#define RT_TIMER_SETUP_PRIORITY 23
+#define FAULT_NONE          0x0000
+#define FAULT_COMM_TIMEOUT  0x0001
+
+#define RT_CONTROL_PRIORITY 24
 #define TCP_TASK_PRIORITY 6
+#define BUTTON_TASK_PRIORITY 5
 
 #if CONFIG_FREERTOS_UNICORE
 #define RT_CORE_ID 0
@@ -95,27 +99,39 @@ static const char *TAG = "eth_rt_motor";
 #endif
 
 typedef struct {
+    volatile int manual_pwm;
+    volatile int target_rpm;
+    volatile int kp_x100;
+    volatile int ki_x100;
+    volatile bool pi_enabled;
+    volatile bool manual_pwm_pending;
+    volatile int64_t last_command_time_us;
+} control_command_t;
+
+typedef struct {
     int rpm;
     int pwm;
     int target_rpm;
-    int kp_x100;
-    int ki_x100;
-    bool pi_enabled;
     uint32_t rx_frames;
     uint32_t deadline_misses;
-    int64_t last_command_time_us;
     int64_t max_rt_exec_us;
-} motor_state_t;
+    uint32_t fault_flags;
+} telemetry_t;
 
 static pcnt_unit_handle_t pcnt_unit = NULL;
 static portMUX_TYPE state_lock = portMUX_INITIALIZER_UNLOCKED;
-static motor_state_t g_state = {
+
+static control_command_t g_cmd = {
     .kp_x100 = 50,
     .ki_x100 = 10,
 };
+
+static telemetry_t g_tel;
+
 static volatile int64_t last_exec_us = 0;
 static int s_pi_integral = 0;
 static gptimer_handle_t s_rt_timer = NULL;
+static TaskHandle_t rt_task_handle = NULL;
 
 static uint8_t calc_crc(const uint8_t *frame)
 {
@@ -136,81 +152,51 @@ static uint8_t frame_opt1(const uint8_t *frame)
     return frame[7];
 }
 
-static void state_snapshot(motor_state_t *out)
+static void telemetry_snapshot(telemetry_t *out)
 {
     portENTER_CRITICAL(&state_lock);
-    *out = g_state;
-    portEXIT_CRITICAL(&state_lock);
-}
-
-static void state_set_pwm(int pwm)
-{
-    portENTER_CRITICAL(&state_lock);
-    g_state.pwm = pwm;
+    *out = g_tel;
     portEXIT_CRITICAL(&state_lock);
 }
 
 static void state_note_command(void)
 {
     portENTER_CRITICAL(&state_lock);
-    g_state.rx_frames++;
-    g_state.last_command_time_us = esp_timer_get_time();
+    g_tel.rx_frames++;
+    g_cmd.last_command_time_us = esp_timer_get_time();
     portEXIT_CRITICAL(&state_lock);
 }
-
 
 static void set_pi_enabled(bool enabled)
 {
     portENTER_CRITICAL(&state_lock);
-    g_state.pi_enabled = enabled;
+    g_cmd.pi_enabled = enabled;
     portEXIT_CRITICAL(&state_lock);
-    if (!enabled) {
-        s_pi_integral = 0;
-    }
 }
 
 static void set_target_rpm(int target)
 {
     portENTER_CRITICAL(&state_lock);
-    g_state.target_rpm = target;
+    g_cmd.target_rpm = target;
     portEXIT_CRITICAL(&state_lock);
-    s_pi_integral = 0;
 }
 
 static void set_gains(int kp_x100, int ki_x100)
 {
     portENTER_CRITICAL(&state_lock);
-    g_state.kp_x100 = kp_x100;
-    g_state.ki_x100 = ki_x100;
+    g_cmd.kp_x100 = kp_x100;
+    g_cmd.ki_x100 = ki_x100;
     portEXIT_CRITICAL(&state_lock);
-    s_pi_integral = 0;
-}
-
-static void set_motor_output(int pwm)
-{
-    if (pwm < 0) {
-        pwm = 0;
-    } else if (pwm > MOTOR_PWM_MAX_DUTY) {
-        pwm = MOTOR_PWM_MAX_DUTY;
-    }
-
-    if (pwm == 0) {
-        gpio_set_level(MOTOR_IN1_PIN, 0);
-        gpio_set_level(MOTOR_IN2_PIN, 0);
-    } else {
-        gpio_set_level(MOTOR_IN1_PIN, 1);
-        gpio_set_level(MOTOR_IN2_PIN, 0);
-    }
-
-    ESP_ERROR_CHECK(ledc_set_duty(MOTOR_PWM_MODE, MOTOR_PWM_CHANNEL, pwm));
-    ESP_ERROR_CHECK(ledc_update_duty(MOTOR_PWM_MODE, MOTOR_PWM_CHANNEL));
-    state_set_pwm(pwm);
 }
 
 static void stop_motor_safely(void)
 {
-    set_pi_enabled(false);
-    set_motor_output(0);
+    portENTER_CRITICAL(&state_lock);
+    g_cmd.pi_enabled = false;
+    g_cmd.manual_pwm = 0;
+    g_cmd.manual_pwm_pending = true;
+    g_cmd.last_command_time_us = esp_timer_get_time();
+    portEXIT_CRITICAL(&state_lock);
 }
 
 static void init_encoder(void)
@@ -296,7 +282,7 @@ static int IRAM_ATTR clamp_pwm(int pwm)
     return pwm;
 }
 
-static void IRAM_ATTR set_motor_output_isr(int pwm)
+static void set_motor_output_rt(int pwm)
 {
     pwm = clamp_pwm(pwm);
 
@@ -311,12 +297,12 @@ static void IRAM_ATTR set_motor_output_isr(int pwm)
     (void)ledc_set_duty(MOTOR_PWM_MODE, MOTOR_PWM_CHANNEL, pwm);
     (void)ledc_update_duty(MOTOR_PWM_MODE, MOTOR_PWM_CHANNEL);
 
-    portENTER_CRITICAL_ISR(&state_lock);
-    g_state.pwm = pwm;
-    portEXIT_CRITICAL_ISR(&state_lock);
+    portENTER_CRITICAL(&state_lock);
+    g_tel.pwm = pwm;
+    portEXIT_CRITICAL(&state_lock);
 }
 
-static int IRAM_ATTR pi_step_common(int target, int rpm, int kp_x100, int ki_x100)
+static int pi_step_common(int target, int rpm, int kp_x100, int ki_x100)
 {
     int error = target - rpm;
     s_pi_integral += error;
@@ -351,84 +337,133 @@ static bool IRAM_ATTR rt_timer_on_alarm(gptimer_handle_t timer,
     (void)edata;
     (void)user_ctx;
 
+    BaseType_t high_task_woken = pdFALSE;
+    if (rt_task_handle != NULL) {
+        vTaskNotifyGiveFromISR(rt_task_handle, &high_task_woken);
+    }
+    return high_task_woken == pdTRUE;
+}
+
+static void rt_control_task(void *arg)
+{
     static int pi_countdown = PI_DIVIDER;
     static int kick_ticks_remaining = 0;
-    static int current_rpm = 0; // Biến lưu RPM mượt hơn
+    static int current_rpm = 0; 
+    
+    while (1) {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 
-    int64_t start_us = esp_timer_get_time();
-    if (gpio_get_level(BOOT_BUTTON_PIN) == 0) {
-        
-        esp_rom_delay_us(600); 
-    }
+        int64_t start_us = esp_timer_get_time();
 
-    // CHỈ ĐỌC VÀ CLEAR ENCODER MỖI 50ms (PI_PERIOD_MS)
-    pi_countdown--;
-    if (pi_countdown <= 0) {
-        current_rpm = sample_rpm_isr(PI_PERIOD_MS);
-    }
+        pi_countdown--;
+        if (pi_countdown <= 0) {
+            current_rpm = sample_rpm_isr(PI_PERIOD_MS);
+        }
 
-    motor_state_t st;
-    portENTER_CRITICAL_ISR(&state_lock);
-    g_state.rpm = current_rpm;
-    st = g_state;
-    portEXIT_CRITICAL_ISR(&state_lock);
+        control_command_t cmd;
+        portENTER_CRITICAL(&state_lock);
+        cmd = g_cmd;
+        portEXIT_CRITICAL(&state_lock);
 
-    bool command_timeout = false;
-    if (st.pi_enabled && st.last_command_time_us > 0) {
-        command_timeout = (start_us - st.last_command_time_us) > (COMMAND_TIMEOUT_MS * 1000LL);
-    }
+        bool command_timeout = false;
+        if (cmd.last_command_time_us > 0) {
+            command_timeout = (start_us - cmd.last_command_time_us) > (COMMAND_TIMEOUT_MS * 1000LL);
+        }
 
-    if (command_timeout) {
-        s_pi_integral = 0;
-        kick_ticks_remaining = 0;
-        pi_countdown = PI_DIVIDER; 
-        portENTER_CRITICAL_ISR(&state_lock);
-        g_state.pi_enabled = false;
-        portEXIT_CRITICAL_ISR(&state_lock);
-        set_motor_output_isr(0);
-    } else if (pi_countdown <= 0) {
-        pi_countdown = PI_DIVIDER; // Reset cho chu kỳ 50ms tiếp theo
+        uint32_t fault_flags = FAULT_NONE;
 
-        // Chạy vòng lặp PI
-        if (st.pi_enabled) {
-            if (st.target_rpm <= 0) {
-                s_pi_integral = 0;
-                kick_ticks_remaining = 0;
-                set_motor_output_isr(0);
-            } else if (current_rpm == 0 && st.pwm == 0 && kick_ticks_remaining == 0) {
-                kick_ticks_remaining = MOTOR_KICK_START_MS / PI_PERIOD_MS;
-                if (kick_ticks_remaining < 1) {
-                    kick_ticks_remaining = 1;
+        if (command_timeout) {
+            s_pi_integral = 0;
+            kick_ticks_remaining = 0;
+            pi_countdown = PI_DIVIDER; 
+            
+            portENTER_CRITICAL(&state_lock);
+            g_cmd.pi_enabled = false;
+            g_cmd.manual_pwm_pending = false;
+            g_cmd.manual_pwm = 0;
+            portEXIT_CRITICAL(&state_lock);
+            
+            set_motor_output_rt(0);
+            fault_flags |= FAULT_COMM_TIMEOUT;
+        } else if (cmd.manual_pwm_pending) {
+            portENTER_CRITICAL(&state_lock);
+            g_cmd.manual_pwm_pending = false;
+            portEXIT_CRITICAL(&state_lock);
+            
+            set_motor_output_rt(cmd.manual_pwm);
+            kick_ticks_remaining = 0;
+            s_pi_integral = 0;
+        } else if (pi_countdown <= 0) {
+            pi_countdown = PI_DIVIDER; 
+
+            if (cmd.pi_enabled) {
+                if (cmd.target_rpm <= 0) {
+                    s_pi_integral = 0;
+                    kick_ticks_remaining = 0;
+                    set_motor_output_rt(0);
+                } else if (current_rpm == 0 && g_tel.pwm == 0 && kick_ticks_remaining == 0) {
+                    kick_ticks_remaining = MOTOR_KICK_START_MS / PI_PERIOD_MS;
+                    if (kick_ticks_remaining < 1) {
+                        kick_ticks_remaining = 1;
+                    }
+                    set_motor_output_rt(MOTOR_KICK_START_PWM);
+                } else if (kick_ticks_remaining > 0) {
+                    kick_ticks_remaining--;
+                    set_motor_output_rt(MOTOR_KICK_START_PWM);
+                } else {
+                    set_motor_output_rt(pi_step_common(cmd.target_rpm, current_rpm, cmd.kp_x100, cmd.ki_x100));
                 }
-                set_motor_output_isr(MOTOR_KICK_START_PWM);
-            } else if (kick_ticks_remaining > 0) {
-                kick_ticks_remaining--;
-                set_motor_output_isr(MOTOR_KICK_START_PWM);
-            } else {
-                // Đưa current_rpm (chính xác hơn) vào tính toán PI
-                set_motor_output_isr(pi_step_common(st.target_rpm, current_rpm, st.kp_x100, st.ki_x100));
             }
         }
-    }
 
-    // Tính toán thời gian thực thi (giữ nguyên)
-    int64_t exec_us = esp_timer_get_time() - start_us;
-    last_exec_us = exec_us;
-   portENTER_CRITICAL_ISR(&state_lock);
-    if (exec_us > g_state.max_rt_exec_us) {
-        g_state.max_rt_exec_us = exec_us;
+        int64_t exec_us = esp_timer_get_time() - start_us;
+        last_exec_us = exec_us;
+        
+        portENTER_CRITICAL(&state_lock);
+        g_tel.rpm = current_rpm;
+        g_tel.target_rpm = cmd.target_rpm;
+        g_tel.fault_flags = fault_flags;
+        if (exec_us > g_tel.max_rt_exec_us) {
+            g_tel.max_rt_exec_us = exec_us;
+        }
+        if (exec_us > RT_DEADLINE_BUDGET_US) {
+            g_tel.deadline_misses++;
+        }
+        portEXIT_CRITICAL(&state_lock);
     }
-    if (exec_us > RT_DEADLINE_BUDGET_US) {
-        g_state.deadline_misses++;
-    }
-    portEXIT_CRITICAL_ISR(&state_lock);
+}
 
-    return false;
+static void button_task(void *arg)
+{
+    while (1) {
+        if (gpio_get_level(BOOT_BUTTON_PIN) == 0) {
+            stop_motor_safely();
+        }
+        vTaskDelay(pdMS_TO_TICKS(20));
+    }
 }
 
 static void rt_timer_setup_task(void *pvParameters)
 {
     (void)pvParameters;
+
+    xTaskCreatePinnedToCore(
+        rt_control_task,
+        "rt_control",
+        4096,
+        NULL,
+        RT_CONTROL_PRIORITY,
+        &rt_task_handle,
+        RT_CORE_ID);
+
+    xTaskCreatePinnedToCore(
+        button_task,
+        "button_task",
+        2048,
+        NULL,
+        BUTTON_TASK_PRIORITY,
+        NULL,
+        RT_CORE_ID);
 
     gptimer_config_t timer_config = {
         .clk_src = GPTIMER_CLK_SRC_DEFAULT,
@@ -496,24 +531,29 @@ static void build_response(uint8_t *tx, uint8_t cmd, uint16_t value, uint8_t sta
     tx[11] = '#';
 }
 
-static uint16_t status_value(uint8_t selector, const motor_state_t *st)
+static uint16_t status_value(uint8_t selector, const telemetry_t *tel)
 {
     switch (selector) {
     case STATUS_SEL_FLAGS: {
         uint16_t flags = 0;
-        if (st->pi_enabled) {
+        control_command_t cmd;
+        portENTER_CRITICAL(&state_lock);
+        cmd = g_cmd;
+        portEXIT_CRITICAL(&state_lock);
+        if (cmd.pi_enabled) {
             flags |= CONTROL_FLAG_PI_ENABLED;
         }
+        flags |= tel->fault_flags << 8;
         return flags;
     }
     case STATUS_SEL_TARGET_RPM:
-        return st->target_rpm < 0 ? 0 : (st->target_rpm > 65535 ? 65535 : st->target_rpm);
+        return tel->target_rpm < 0 ? 0 : (tel->target_rpm > 65535 ? 65535 : tel->target_rpm);
     case STATUS_SEL_DEADLINE_MISSES:
-        return st->deadline_misses > 65535 ? 65535 : (uint16_t)st->deadline_misses;
+        return tel->deadline_misses > 65535 ? 65535 : (uint16_t)tel->deadline_misses;
     case STATUS_SEL_MAX_RT_EXEC_US:
-        return st->max_rt_exec_us > 65535 ? 65535 : (uint16_t)st->max_rt_exec_us;
+        return tel->max_rt_exec_us > 65535 ? 65535 : (uint16_t)tel->max_rt_exec_us;
     case STATUS_SEL_RX_FRAMES:
-        return st->rx_frames > 65535 ? 65535 : (uint16_t)st->rx_frames;
+        return tel->rx_frames > 65535 ? 65535 : (uint16_t)tel->rx_frames;
     default:
         return 0;
     }
@@ -524,7 +564,8 @@ static void handle_command(const uint8_t *rx, uint16_t *value, uint8_t *status, 
     const uint8_t cmd = rx[4];
     const uint16_t request_value = frame_value(rx);
     const uint8_t opt1 = frame_opt1(rx);
-    motor_state_t st;
+    telemetry_t tel;
+    control_command_t st_cmd;
 
     *value = request_value;
     *status = STATUS_OK;
@@ -535,8 +576,12 @@ static void handle_command(const uint8_t *rx, uint16_t *value, uint8_t *status, 
     switch (cmd) {
     case CMD_WRITE_PWM: {
         int pwm = request_value > MOTOR_PWM_MAX_DUTY ? MOTOR_PWM_MAX_DUTY : request_value;
-        set_pi_enabled(false);
-        set_motor_output(pwm);
+        portENTER_CRITICAL(&state_lock);
+        g_cmd.pi_enabled = false;
+        g_cmd.manual_pwm = pwm;
+        g_cmd.manual_pwm_pending = true;
+        g_cmd.last_command_time_us = esp_timer_get_time();
+        portEXIT_CRITICAL(&state_lock);
         *value = pwm;
         break;
     }
@@ -544,31 +589,38 @@ static void handle_command(const uint8_t *rx, uint16_t *value, uint8_t *status, 
         set_target_rpm(request_value);
         break;
     case CMD_SET_KP:
-        state_snapshot(&st);
-        set_gains(request_value, st.ki_x100);
+        portENTER_CRITICAL(&state_lock);
+        st_cmd = g_cmd;
+        portEXIT_CRITICAL(&state_lock);
+        set_gains(request_value, st_cmd.ki_x100);
         break;
     case CMD_SET_KI:
-        state_snapshot(&st);
-        set_gains(st.kp_x100, request_value);
+        portENTER_CRITICAL(&state_lock);
+        st_cmd = g_cmd;
+        portEXIT_CRITICAL(&state_lock);
+        set_gains(st_cmd.kp_x100, request_value);
         break;
     case CMD_PI_ENABLE:
         set_pi_enabled(request_value != 0);
         if (request_value == 0) {
-            set_motor_output(0);
+            portENTER_CRITICAL(&state_lock);
+            g_cmd.manual_pwm = 0;
+            g_cmd.manual_pwm_pending = true;
+            portEXIT_CRITICAL(&state_lock);
         }
         *value = request_value != 0 ? 1 : 0;
         break;
     case CMD_READ_PWM:
-        state_snapshot(&st);
-        *value = st.pwm;
+        telemetry_snapshot(&tel);
+        *value = tel.pwm;
         break;
     case CMD_READ_ENCODER:
-        state_snapshot(&st);
-        *value = st.rpm < 0 ? 0 : (st.rpm > 65535 ? 65535 : st.rpm);
+        telemetry_snapshot(&tel);
+        *value = tel.rpm < 0 ? 0 : (tel.rpm > 65535 ? 65535 : tel.rpm);
         break;
     case CMD_STATUS:
-        state_snapshot(&st);
-        *value = status_value(opt1, &st);
+        telemetry_snapshot(&tel);
+        *value = status_value(opt1, &tel);
         break;
     case CMD_READ_ADC:
     case CMD_LED:

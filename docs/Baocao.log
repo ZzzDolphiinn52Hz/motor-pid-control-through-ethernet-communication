@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.12)  20 JUN 2026 02:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.12)  20 JUN 2026 03:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1237,15 +1237,29 @@ Package hyperref Info: Link coloring ON on input line 73.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \c@lstlisting=\count357
-<logo_bk_white.png, id=214, 1016.79875pt x 1027.84pt>
-File: logo_bk_white.png Graphic file (type png)
-<use logo_bk_white.png>
-Package pdftex.def Info: logo_bk_white.png  used on input line 128.
-(pdftex.def)             Requested size: 56.9055pt x 57.5116pt.
-[1
 
-{C:/Users/PC/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./logo_bk_white
-.png>] (Baocao.toc
+LaTeX Warning: File `logo_bk_white.png' not found on input line 128.
+
+
+! Package pdftex.def Error: File `logo_bk_white.png' not found: using draft set
+ting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.128 ...udegraphics[width=2cm]{logo_bk_white.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+LaTeX Font Info:    Trying to load font information for T5+cmtt on input line 1
+28.
+(C:\Users\PC\AppData\Local\Programs\MiKTeX\tex/latex/vntex\t5cmtt.fd
+File: t5cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+) [1
+
+{C:/Users/PC/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (Baocao.toc
 LaTeX Font Info:    Trying to load font information for U+msa on input line 3.
 
 (C:\Users\PC\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
@@ -1373,20 +1387,14 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.4.1})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.449 
-      
+l.441 
+      ] [11
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4.2}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.449 
-      ]
-LaTeX Font Info:    Trying to load font information for T5+cmtt on input line 4
-52.
- (C:\Users\PC\AppData\Local\Programs\MiKTeX\tex/latex/vntex\t5cmtt.fd
-File: t5cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-[11] [12] [13] [14] [15] [16] [17] [18] [19] [20]
+l.471 \end{lstlisting}
+                      ] [12] [13] [14] [15] [16] [17] [18] [19] [20]
 Ch\uhorn \ohorn ng 5.
 [21
 
@@ -1395,7 +1403,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.854 \chapter
+l.860 \chapter
               {THIẾT KẾ GIAO DIỆN QUẢN LÍ C\#}]
 Ch\uhorn \ohorn ng 6.
 [24
@@ -1405,26 +1413,26 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.6.1})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.928     AppendLog(
+l.934     AppendLog(
                     $"Connected to {host}:{port}");] [26] [27] [28] [29]
 [30] [31] [32] [33
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.2}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1169 
+l.1175 
        ] [34
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.3}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1204 \end{lstlisting}
+l.1210 \end{lstlisting}
                        
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.4}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1204 \end{lstlisting}
+l.1210 \end{lstlisting}
                        ] [35]
 Ch\uhorn \ohorn ng 7.
 [36
@@ -1432,20 +1440,20 @@ Ch\uhorn \ohorn ng 7.
 ] [37]
 Ch\uhorn \ohorn ng 8.
 
-Overfull \hbox (350.47873pt too wide) in paragraph at lines 1224--1225
+Overfull \hbox (350.47873pt too wide) in paragraph at lines 1230--1231
 \T5/cmr/m/n/12 [1] Espres-sif Sys-tems, ESP32 Se-ries Datasheet. Espres-sif Sys
 -tems.Link: https://www.espressif.com/sites/default/files/documentation/esp32_d
 atasheet_en.pdf 
  []
 
 
-Overfull \hbox (146.55074pt too wide) in paragraph at lines 1226--1227
+Overfull \hbox (146.55074pt too wide) in paragraph at lines 1232--1233
 []\T5/cmr/m/n/12 [2] WIZ-net, W5500 Datasheet. WIZ-net Co., Ltd.Link: https://d
 ocs.wiznet.io/Product/iEthernet/W5500/datasheet 
  []
 
 
-Overfull \hbox (104.5721pt too wide) in paragraph at lines 1228--1229
+Overfull \hbox (104.5721pt too wide) in paragraph at lines 1234--1235
 []\T5/cmr/m/n/12 [3] Mi-crosoft, Tcp-Client Class ^^U Sys-tem.Net.Sockets. Mi-c
 rosoft Learn.Link: https://learn.microsoft.com/en-
  []
@@ -1461,22 +1469,23 @@ Package rerunfilecheck Info: File `Baocao.out' has not changed.
 (rerunfilecheck)             Checksum: 3BC9BF9662608536E065A17507F393E3;12215.
  ) 
 Here is how much of TeX's memory you used:
- 28234 strings out of 467509
- 531962 string characters out of 5410238
+ 28262 strings out of 467509
+ 532702 string characters out of 5410238
  1233315 words of memory out of 5000000
- 56670 multiletter control sequences out of 15000+600000
- 648605 words of font info for 76 fonts, out of 8000000 for 9000
+ 56697 multiletter control sequences out of 15000+600000
+ 648942 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,9n,104p,1452b,1273s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/PC/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnbx10.pfb><
-C:/Users/PC/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnbx12.pfb><C:/
-Users/PC/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnr10.pfb><C:/User
-s/PC/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnr12.pfb><C:/Users/PC
-/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vntt10.pfb><C:/Users/PC/Ap
-pData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vntt12.pfb>
-Output written on Baocao.pdf (44 pages, 331789 bytes).
+ <C:\Users\PC\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm120
+0.pk><C:/Users/PC/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnbx10.pf
+b><C:/Users/PC/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnbx12.pfb><
+C:/Users/PC/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnr10.pfb><C:/U
+sers/PC/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vnr12.pfb><C:/Users
+/PC/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vntt10.pfb><C:/Users/PC
+/AppData/Local/Programs/MiKTeX/fonts/type1/vntex/vnr/vntt12.pfb>
+Output written on Baocao.pdf (44 pages, 286976 bytes).
 PDF statistics:
- 818 PDF objects out of 1000 (max. 8388607)
+ 820 PDF objects out of 1000 (max. 8388607)
  336 named destinations out of 1000 (max. 500000)
- 434 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 429 words of extra memory for PDF output out of 10000 (max. 10000000)
 

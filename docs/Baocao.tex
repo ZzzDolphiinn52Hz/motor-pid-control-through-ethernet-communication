@@ -431,9 +431,15 @@ Firmware của hệ thống được xây dựng trên nền tảng ESP-IDF và 
 \caption{Hình 3.1. Môi trường phát triển firmware ESP32 sử dụng ESP-IDF trên Visual Studio Code}
 \end{figure}
 
-Firmware được tổ chức theo mô hình đa nhiệm của FreeRTOS. Trong đó, các chức năng chính như đo tốc độ, điều khiển động cơ và truyền thông TCP/IP được tách thành các khối xử lý riêng. Việc chia chương trình thành nhiều khối giúp hệ thống hoạt động ổn định, dễ mở rộng và thuận tiện cho quá trình kiểm tra, sửa lỗi.
+Firmware được tổ chức theo mô hình đa nhiệm của FreeRTOS và áp dụng nguyên tắc **Hard Realtime công nghiệp**. Hệ thống khai thác cấu trúc lõi kép của ESP32:
+\begin{itemize}
+    \item \textbf{Core 0 (Mạng và Giao tiếp):} Chạy \texttt{tcp\_server\_task} với độ ưu tiên thấp. Nhiệm vụ duy nhất là nhận/gửi dữ liệu với PC, không can thiệp trực tiếp vào xung PWM của phần cứng. Dữ liệu lệnh được lưu vào bộ đệm cấu trúc \texttt{control\_command\_t}.
+    \item \textbf{Core 1 (Điều khiển thời gian thực):} Chạy \texttt{rt\_control\_task} với độ ưu tiên cao nhất. Vòng lặp điều khiển bao gồm đọc encoder, tính toán PID, cập nhật xung PWM được thực hiện hoàn toàn độc lập tại đây. Các trạng thái telemetry sẽ được xuất ra bộ đệm \texttt{telemetry\_t} để Core 0 đọc, giảm thiểu việc tranh chấp tài nguyên (lock/critical section).
+\end{itemize}
 
-Cấu trúc firmware gồm các khối chức năng chính: khối khởi tạo phần cứng, khối đọc encoder, khối điều khiển PWM cho động cơ, khối điều khiển PI, khối truyền thông Ethernet TCP/IP, khối xử lý frame dữ liệu và khối phản hồi dữ liệu về máy tính.
+Để đảm bảo đáp ứng thời gian thực nghiêm ngặt, bộ định thời \texttt{GPTimer} kích hoạt ngắt (ISR) mỗi 5ms. Tuy nhiên, hàm xử lý ngắt được tối giản hóa tối đa: chỉ dùng tín hiệu \texttt{vTaskNotifyGiveFromISR} để đánh thức \texttt{rt\_control\_task} hoạt động, hoàn toàn loại bỏ các hàm trễ (delay) hoặc xử lý logic nặng trong ngắt. Ngoài ra, hệ thống tích hợp bộ giám sát kết nối (Watchdog Timeout) cho cả chế độ thủ công (Manual) và PID, tự động dừng động cơ an toàn khi mất tín hiệu Ethernet.
+
+Cấu trúc firmware gồm các khối chức năng chính: khối khởi tạo phần cứng, ngắt phần cứng tối giản, khối điều khiển vòng kín (Realtime Control), khối truyền thông Ethernet TCP/IP, khối xử lý nút nhấn khẩn cấp và các bộ nhớ đệm trạng thái phi trạng thái.
 
 \begin{figure}[H]
 \centering
@@ -802,7 +808,7 @@ Hàm send\_esp\_cmd đóng gói các byte này cùng với mã lệnh CMD\_WRITE
 
 \section{Vòng lặp lấy mẫu thời gian}
 
-for i = 1:samples
+for i = 1 : samples
 
 \begin{lstlisting}
     send_esp_cmd(tcp_obj, 7, 0, 0); % CMD_READ_ENCODER = 0x07
