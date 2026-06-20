@@ -7,47 +7,47 @@
 \contentsline {chapter}{\numberline {2}CƠ SỞ LÝ THUYẾT VỀ ETHERNET VÀ TCP/IP}{4}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Tổng quan về Ethernet}{4}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Mô hình TCP/IP}{5}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Cấu trúc Frame truyền của hệ thống}{5}{section.2.3}%
-\contentsline {chapter}{\numberline {3}MẠCH NGUYÊN LÍ VÀ LAYOUT}{7}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Sơ đồ nguyên lí}{7}{section.3.1}%
-\contentsline {section}{\numberline {3.2}PCB Layout}{8}{section.3.2}%
-\contentsline {chapter}{\numberline {4}THIẾT KẾ FIRMWARE HỆ THỐNG}{10}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Tổng quan cấu trúc firmware}{10}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Khởi tạo các module phần cứng}{11}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Khởi tạo Encoder}{11}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Khởi tạo điều khiển động cơ}{12}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Khởi tạo Ethernet W5500}{14}{subsection.4.2.3}%
-\contentsline {section}{\numberline {4.3}Các hàm xử lý trong firmware}{14}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Hàm điều khiển tốc độ động cơ}{14}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Hàm điều khiển chiều quay động cơ}{15}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Hàm tính tốc độ RPM}{15}{subsection.4.3.3}%
-\contentsline {subsection}{\numberline {4.3.4}Task điều khiển PI}{16}{subsection.4.3.4}%
-\contentsline {subsection}{\numberline {4.3.5}Hàm kiểm tra CRC}{17}{subsection.4.3.5}%
-\contentsline {subsection}{\numberline {4.3.6}Hàm xử lý TCP Server}{18}{subsection.4.3.6}%
-\contentsline {subsection}{\numberline {4.3.7}Thiết kế frame truyền thông trong firmware}{18}{subsection.4.3.7}%
-\contentsline {section}{\numberline {4.4}Luồng hoạt động của firmware}{20}{section.4.4}%
-\contentsline {chapter}{\numberline {5}MATLAB SIMULINK – PHÂN TÍCH MÃ NGUỒN CƠ CHẾ GIAO TIẾP VÀ THU THẬP DỮ LIỆU QUA TCP/IP}{21}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Khởi tạo cấu hình và thiết lập kết nối TCP/IP}{21}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Vòng lặp lấy mẫu thời gian}{22}{section.5.2}%
-\contentsline {chapter}{\numberline {6}THIẾT KẾ GIAO DIỆN QUẢN LÍ C\#}{24}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Thiết kế giao diện winform}{25}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Cấu hình TCP Client trên C\#}{25}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Xây dựng hàm đóng gói frame @SEN}{26}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Chương trình con tính CRC}{27}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Chương trình con đóng gói frame @SEN}{27}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Chương trình con gửi frame xuống ESP32}{28}{section.6.6}%
-\contentsline {section}{\numberline {6.7}Xây dựng hàm nhận và giải mã frame @REC}{29}{section.6.7}%
-\contentsline {section}{\numberline {6.8}Chương trình con nhận dữ liệu từ ESP32}{29}{section.6.8}%
-\contentsline {section}{\numberline {6.9}Chương trình con xử lý bộ đệm nhận}{30}{section.6.9}%
-\contentsline {section}{\numberline {6.10}Chương trình con kiểm tra frame nhận}{31}{section.6.10}%
-\contentsline {section}{\numberline {6.11}Chương trình con giải mã frame nhận}{31}{section.6.11}%
-\contentsline {section}{\numberline {6.12}Hiển thị dữ liệu realtime: tốc độ, PWM, trạng thái kết nối}{32}{section.6.12}%
-\contentsline {section}{\numberline {6.13}Chương trình con cập nhật trạng thái kết nối}{32}{section.6.13}%
-\contentsline {section}{\numberline {6.14}Chương trình con ghi log realtime}{33}{section.6.14}%
-\contentsline {section}{\numberline {6.15}Chương trình con cập nhật tốc độ RPM}{33}{section.6.15}%
-\contentsline {section}{\numberline {6.16}Chương trình con cập nhật giá trị PWM}{33}{section.6.16}%
-\contentsline {section}{\numberline {6.17}Chương trình con đọc tốc độ RPM}{34}{section.6.17}%
-\contentsline {section}{\numberline {6.18}Chương trình con tự động đọc RPM}{34}{section.6.18}%
-\contentsline {section}{\numberline {6.19}Đoạn xử lý dữ liệu realtime trong frame phản hồi @REC}{34}{section.6.19}%
-\contentsline {chapter}{\numberline {7}TỔNG KẾT}{36}{chapter.7}%
-\contentsline {chapter}{\numberline {8}TÀI LIỆU THAM KHẢO}{38}{chapter.8}%
+\contentsline {section}{\numberline {2.3}Cấu trúc Frame truyền của hệ thống}{6}{section.2.3}%
+\contentsline {chapter}{\numberline {3}MẠCH NGUYÊN LÍ VÀ LAYOUT}{8}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Sơ đồ nguyên lí}{8}{section.3.1}%
+\contentsline {section}{\numberline {3.2}PCB Layout}{13}{section.3.2}%
+\contentsline {chapter}{\numberline {4}THIẾT KẾ FIRMWARE HỆ THỐNG}{14}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Tổng quan cấu trúc firmware}{14}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Khởi tạo các module phần cứng}{15}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Khởi tạo Encoder}{15}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Khởi tạo điều khiển động cơ}{16}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Khởi tạo Ethernet W5500}{18}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Các hàm xử lý trong firmware}{18}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Hàm điều khiển tốc độ động cơ}{18}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Hàm điều khiển chiều quay động cơ}{19}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Hàm tính tốc độ RPM}{19}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Task điều khiển PI}{20}{subsection.4.3.4}%
+\contentsline {subsection}{\numberline {4.3.5}Hàm kiểm tra CRC}{21}{subsection.4.3.5}%
+\contentsline {subsection}{\numberline {4.3.6}Hàm xử lý TCP Server}{22}{subsection.4.3.6}%
+\contentsline {subsection}{\numberline {4.3.7}Thiết kế frame truyền thông trong firmware}{22}{subsection.4.3.7}%
+\contentsline {section}{\numberline {4.4}Luồng hoạt động của firmware}{24}{section.4.4}%
+\contentsline {chapter}{\numberline {5}MATLAB SIMULINK – PHÂN TÍCH MÃ NGUỒN CƠ CHẾ GIAO TIẾP VÀ THU THẬP DỮ LIỆU QUA TCP/IP}{25}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Khởi tạo cấu hình và thiết lập kết nối TCP/IP}{25}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Vòng lặp lấy mẫu thời gian}{26}{section.5.2}%
+\contentsline {chapter}{\numberline {6}THIẾT KẾ GIAO DIỆN QUẢN LÍ C\#}{28}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Thiết kế giao diện winform}{29}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Cấu hình TCP Client trên C\#}{29}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Xây dựng hàm đóng gói frame @SEN}{30}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Chương trình con tính CRC}{31}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Chương trình con đóng gói frame @SEN}{31}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Chương trình con gửi frame xuống ESP32}{32}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Xây dựng hàm nhận và giải mã frame @REC}{33}{section.6.7}%
+\contentsline {section}{\numberline {6.8}Chương trình con nhận dữ liệu từ ESP32}{33}{section.6.8}%
+\contentsline {section}{\numberline {6.9}Chương trình con xử lý bộ đệm nhận}{34}{section.6.9}%
+\contentsline {section}{\numberline {6.10}Chương trình con kiểm tra frame nhận}{35}{section.6.10}%
+\contentsline {section}{\numberline {6.11}Chương trình con giải mã frame nhận}{35}{section.6.11}%
+\contentsline {section}{\numberline {6.12}Hiển thị dữ liệu realtime: tốc độ, PWM, trạng thái kết nối}{36}{section.6.12}%
+\contentsline {section}{\numberline {6.13}Chương trình con cập nhật trạng thái kết nối}{36}{section.6.13}%
+\contentsline {section}{\numberline {6.14}Chương trình con ghi log realtime}{37}{section.6.14}%
+\contentsline {section}{\numberline {6.15}Chương trình con cập nhật tốc độ RPM}{37}{section.6.15}%
+\contentsline {section}{\numberline {6.16}Chương trình con cập nhật giá trị PWM}{37}{section.6.16}%
+\contentsline {section}{\numberline {6.17}Chương trình con đọc tốc độ RPM}{38}{section.6.17}%
+\contentsline {section}{\numberline {6.18}Chương trình con tự động đọc RPM}{38}{section.6.18}%
+\contentsline {section}{\numberline {6.19}Đoạn xử lý dữ liệu realtime trong frame phản hồi @REC}{38}{section.6.19}%
+\contentsline {chapter}{\numberline {7}TỔNG KẾT}{40}{chapter.7}%
+\contentsline {chapter}{\numberline {8}TÀI LIỆU THAM KHẢO}{42}{chapter.8}%

@@ -1,28 +1,28 @@
 \babel@toc {vietnamese}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Figure 21: Cấu trúc tổng quát}}{5}{figure.2.1}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Figure 22: Cấu trúc frame truyền của Ethernet}}{5}{figure.2.2}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Figure 23: Cấu trúc frame truyền của IP Package}}{6}{figure.2.3}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Figure 24: Cấu trúc frame truyền của TCP segment}}{6}{figure.2.4}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Cấu trúc tổng quát}}{6}{figure.2.1}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Cấu trúc frame truyền của Ethernet}}{6}{figure.2.2}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Cấu trúc frame truyền của IP Package}}{6}{figure.2.3}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Cấu trúc frame truyền của TCP segment}}{7}{figure.2.4}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Hình 4.1: Sơ đồ kết nối chân của ESP32}}{7}{figure.3.1}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Hình 4.2: Sơ đồ kết nối chân của module W5500}}{8}{figure.3.2}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Hình 4.3: Sơ đồ kết nối chân để kết nối với L298N}}{8}{figure.3.3}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Hình 4.4: Sơ đồ kết nối chân của L298N}}{8}{figure.3.4}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Hình 4.5: Sơ đồ kết nối chân để kết nối với DC Servo}}{8}{figure.3.5}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Hình 4.6: Sơ đồ kết nối chân của DC Servo}}{8}{figure.3.6}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Hình 4.7: PCB Layout}}{8}{figure.3.7}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Hình 4.8: 3D View}}{9}{figure.3.8}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Sơ đồ kết nối chân của ESP32}}{8}{figure.3.1}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Sơ đồ kết nối chân của module W5500}}{10}{figure.3.2}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Sơ đồ kết nối chân để kết nối với L298N}}{10}{figure.3.3}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Sơ đồ kết nối chân của L298N}}{11}{figure.3.4}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Sơ đồ kết nối chân để kết nối với DC Servo}}{11}{figure.3.5}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Sơ đồ kết nối chân của DC Servo}}{12}{figure.3.6}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces PCB Layout}}{13}{figure.3.7}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces 3D View}}{13}{figure.3.8}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Môi trường phát triển firmware ESP32 sử dụng ESP-IDF trên Visual Studio Code}}{10}{figure.4.1}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Hình 3.2. Sơ đồ cấu trúc tổng quan firmware ESP32.}}{11}{figure.4.2}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Môi trường phát triển firmware ESP32 sử dụng ESP-IDF trên Visual Studio Code}}{14}{figure.4.1}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Hình 3.2. Sơ đồ cấu trúc tổng quan firmware ESP32.}}{15}{figure.4.2}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Hình 5: Đồ thị đáp ứng tốc độ của động cơ}}{23}{figure.5.1}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Hình 5: Đồ thị đáp ứng tốc độ của động cơ}}{27}{figure.5.1}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Figure 61: Tổng quan giao diện C\#}}{25}{figure.6.1}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Figure 62: Kết quả đọc log}}{33}{figure.6.2}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Figure 63: Cập nhật PWM manual}}{34}{figure.6.3}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Figure 64: Dữ liệu rpm realtime}}{34}{figure.6.4}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Figure 61: Tổng quan giao diện C\#}}{29}{figure.6.1}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Figure 62: Kết quả đọc log}}{37}{figure.6.2}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Figure 63: Cập nhật PWM manual}}{38}{figure.6.3}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Figure 64: Dữ liệu rpm realtime}}{38}{figure.6.4}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
